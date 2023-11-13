@@ -1,9 +1,10 @@
 newGame();
-console.log(secretNumber);
+//console.log(secretNumber);
 
 function newGame(){
     //Estive pegando o segundo child da classe "container__botao", pois desse modo não seria necessário coletar pelo seu ID.
     // newGameBtn = document.getElementById('reiniciar').removeAttribute('disabled');
+    limitNumber = 10;
     secretNumber = genRandomNumber();
     eraseNum();
     numAttempts = 1;
@@ -42,7 +43,23 @@ function checkAttempt() {
 };
 
 function genRandomNumber(){
-    return parseInt(Math.random() * 10 + 1);
+    let choosenNumber = parseInt(Math.random() * limitNumber + 1);
+    let listSortNumbers = [];
+    let qtElementsInList = listSortNumbers.length;
+
+/* Tópico de limpeza de array "listSortNumbers" se por acaso a função "genRandomNumber" não estivesse declarada na função "newGame". Pois do modo que está, toda vez que o jogo for iniciado, a array irá iniciar como nova (sem armazenar resultados anteriores).
+
+    if (qtElementsInList == choosenNumber) {
+        return listSortNumbers = [];
+    }
+*/
+    if (listSortNumbers.includes(choosenNumber)){
+        return genRandomNumber();
+    } else {
+        listSortNumbers.push(choosenNumber);
+        console.log(listSortNumbers);
+        return choosenNumber;
+    };
 };
 
 function eraseNum(){
