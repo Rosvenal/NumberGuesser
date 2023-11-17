@@ -26,16 +26,16 @@ function checkAttempt() {
     let plural = numAttempts > 1 ? "s" : "";
     randomAttempt = document.querySelector('input').value;
     if (randomAttempt == secretNumber) {
-        showText('h1','Você acertou!');
-        let messagAttempt = `Adivinhou o número secreto com ${numAttempts} tentativa${plural}`;
+        showText('h1','Correct!');
+        let messagAttempt = `You find the secret number in ${numAttempts} trie${plural}`;
         showText('p',messagAttempt);
         document.querySelector('.container__botao:nth-child(2)').removeAttribute('disabled');
 
     }else{
         if (randomAttempt > secretNumber) {
-            showText('p','O número secreto é menor :(');
+            showText('p','The secret number is smaller :(');
         }else{
-            showText('p','O número secreto é maior :(');            
+            showText('p','The secret number is bigger :(');            
         }
         numAttempts++;
         eraseNum();
@@ -47,7 +47,7 @@ function genRandomNumber(){
     let listSortNumbers = [];
     let qtElementsInList = listSortNumbers.length;
 
-/* Tópico de limpeza de array "listSortNumbers" se por acaso a função "genRandomNumber" não estivesse declarada na função "newGame". Pois do modo que está, toda vez que o jogo for iniciado, a array irá iniciar como nova (sem armazenar resultados anteriores).
+/* Tópico de limpeza de array "listSortNumbers" se por acaso a função "genRandomNumber" não estivesse declarada na função "newGame". Pois do modo que está, toda vez que o jogo for iniciado, a array irá iniciar como nova (sem manter os resultados anteriores).
 
     if (qtElementsInList == choosenNumber) {
         return listSortNumbers = [];
